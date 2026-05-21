@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dt6fiuyq6p44f"]
+
+[ext_resource type="Script" uid="uid://chl8v17pkj4d1" path="res://item.gd" id="1_tnite"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vpy52"]
+radius = 1.0
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_tnite"]
+radius = 0.25
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ttk8k"]
+albedo_color = Color(0.69411767, 0.5019608, 0.827451, 1)
+metallic = 0.46
+
+[sub_resource type="SphereMesh" id="SphereMesh_kg5e7"]
+material = SubResource("StandardMaterial3D_ttk8k")
+radius = 0.25
+height = 0.5
+
+[node name="Item" type="Node3D" unique_id=174410221]
+script = ExtResource("1_tnite")
+
+[node name="InteractionArea" type="Area3D" parent="." unique_id=36173348]
+
+[node name="Interactable" type="CollisionShape3D" parent="InteractionArea" unique_id=1837012598]
+shape = SubResource("CylinderShape3D_vpy52")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=326025495]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=242483615]
+shape = SubResource("SphereShape3D_tnite")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=294024884]
+mesh = SubResource("SphereMesh_kg5e7")
+
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]

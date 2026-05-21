@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dvlteq7q6ry0p"]
+
+[ext_resource type="PackedScene" uid="uid://dkswp1u7ygagb" path="res://map_test_1.glb" id="1_a0tk4"]
+[ext_resource type="Script" uid="uid://by4mjbbnlp5xm" path="res://node_3d.gd" id="1_i5arm"]
+[ext_resource type="PackedScene" uid="uid://bfsffcdojhofq" path="res://map_test_2.glb" id="2_r3fl7"]
+[ext_resource type="PackedScene" uid="uid://bxyf0r60ha8x0" path="res://map_test_3.glb" id="3_jka67"]
+[ext_resource type="PackedScene" uid="uid://dfinmxrdvtwpd" path="res://Body.tscn" id="4_r3fl7"]
+[ext_resource type="Script" uid="uid://bvnt45x0jmqe0" path="res://room_1.gd" id="6_wc5p8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3fl7"]
+size = Vector3(29.815125, 0.25958252, 55.32007)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jka67"]
+size = Vector3(20.001114, 0.124694824, 28.998795)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_i5arm"]
+size = Vector3(10.963745, 0.21380615, 20.012756)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wc5p8"]
+size = Vector3(29.821762, 9.095398, 55.3291)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=825273272 node_paths=PackedStringArray("_camera", "_camera_positions")]
+script = ExtResource("1_i5arm")
+_camera = NodePath("Node3D/Camera3D")
+_camera_positions = NodePath("Camera_Positions")
+
+[node name="map_test_1" parent="." unique_id=1073059136 instance=ExtResource("1_a0tk4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.45043, 69.444695, -22.45222)
+
+[node name="map_test_2" parent="." unique_id=699237713 instance=ExtResource("2_r3fl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.76923, 69.444695, -22.515581)
+visible = false
+
+[node name="map_test_3" parent="." unique_id=181750802 instance=ExtResource("3_jka67")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.2131, 69.444695, -43.60073)
+visible = false
+
+[node name="CharacterBody3D" parent="." unique_id=1180947177 instance=ExtResource("4_r3fl7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 112.188896, 76.58257, -54.67257)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2015815899]
+transform = Transform3D(0.934896, -0.030550852, 0.35360426, -0.3513183, 0.06194692, 0.93420446, -0.050445434, -0.9976117, 0.047180858, 116, 90, -41)
+
+[node name="Camera_Positions" type="Node" parent="." unique_id=1932694563]
+
+[node name="Position_map_test_2" type="Node3D" parent="Camera_Positions" unique_id=1730706922]
+transform = Transform3D(-4.371139e-08, -0.6427876, 0.76604444, 0, 0.76604444, 0.6427876, -1, 2.8097137e-08, -3.3484866e-08, 97, 85, -55)
+
+[node name="map_test_1_coll" type="CollisionShape3D" parent="." unique_id=2062133933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.19493, 69.31348, -38.995483)
+shape = SubResource("BoxShape3D_r3fl7")
+
+[node name="map_test_2_coll" type="CollisionShape3D" parent="." unique_id=883965384]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82.20902, 69.38754, -56.09649)
+shape = SubResource("BoxShape3D_jka67")
+
+[node name="map_test_3_coll" type="CollisionShape3D" parent="." unique_id=1024143446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.7817, 69.34509, -22.506622)
+shape = SubResource("BoxShape3D_i5arm")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1893111054]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.26704, 81.26876, -29.076485)
+script = ExtResource("6_wc5p8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1230353605]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.9281998, -7.282089, -9.938477)
+shape = SubResource("BoxShape3D_wc5p8")
+
+[node name="Position_map_test_1" type="Node3D" parent="Area3D" unique_id=2002629951]
+transform = Transform3D(-4.371139e-08, -0.6427876, 0.76604444, 0, 0.76604444, 0.6427876, -1, 2.8097137e-08, -3.3484866e-08, 22.732964, 5.7312393, -7.9235153)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1056444386]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 131, 73.42, -36.483)
+
+[node name="Camera3D" type="Camera3D" parent="Node3D" unique_id=861136748]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
